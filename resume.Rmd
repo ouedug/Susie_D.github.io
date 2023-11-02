@@ -1,0 +1,40 @@
+---
+title: "Resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+## Personal Information
+
+- **Name**: Shuchen Dong
+
+- **Email**: ouedug@gmail.com
+
+## Education
+
+**Columbia University** | New York, NY
+
+M.S. Biostatistics | September 2023 - May 2025
+
+**University of Nebraska-Lincoln** | Lincoln, NE
+
+B.S. Integrated Science | September 2022 - June 2023
+
+**Northwest A&F University** | Yangling, Shannxi
+
+B.S. Food Science and Engineering | September 2019 - June 2023
+
+## Research
+- **Research on Lactobacillus Plantarum KX041 and Its Exopolysaccharide Intervention on Obese Mice** | June 2021 - May 2022
+- **Lacticaseibacillus rhamnosus LS8 Ameliorates Azoxymethane/Dextran Sulfate Sodium-Induced Colitis-Associated Tumorigenesis in Mice via Regulating Gut Microbiota and Inhibiting Inflammation. Probiotics and Antimicrobial Proteins** | July 2020 - March 2021
+- **Research on Interaction of Companilactobacillus Crustorum MN047-Derived Bacteriocins with Gut Microbiota** | December 2020 - May 2021
+- **Research on Extraction Optimization and Characterization of Persimmon Peel Pectin Extracted by Subcritical Water (Innovative Food Science and Emerging Technologies)** | July 2021 - May 2022
+
+## Experience
+
+**Disease Control and Prevention Center, Hunnan District, Shenyang** | Assistant Intern in  Planned Immunization Department | July 2022 - September 2022
+
+**Wahaha Diary Co** | Quality Testing Intern | July 2021 - August 2021
+
+**Huamei Food Co** | Intern in Research & Development Center | February 2020 
