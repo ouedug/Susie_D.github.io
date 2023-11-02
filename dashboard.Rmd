@@ -1,0 +1,85 @@
+---
+title: "dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+```
+
+## Focus on `ny_noaa` data.
+
+## variables:
+
+- id: Weather station ID
+- date: Date of observation
+- prcp: Precipitation (tenths of mm)
+- snow: Snowfall (mm)
+- snwd: Snow depth (mm)
+- tmax: Maximum temperature (tenths of degrees C)
+- tmin: Minimum temperature (tenths of degrees C)
+
+```{r}
+data("ny_noaa")
+
+# Data cleaning: Choose entries with nonzero snowfall and restrict it to a maximum of 200 inches of snowfall.
+
+ny_noaa_df= 
+  ny_noaa %>%
+  janitor::clean_names() %>%
+  drop_na() %>%
+  separate(col = date, into = c ("year", "month", "day") , sep = "-", convert = TRUE) %>%
+  mutate(snowfall = snow*25.4,
+         month = month.abb[month],
+         tmax = as.numeric(tmax) / 10,
+         tmin = as.numeric(tmin) / 10) %>%
+  filter(snow > 0, snow < 200, year == 2000) %>%
+  select(id, year, month, day, snowfall, tmax, tmin)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+## Chart A
+
+```{r}
+ny_noaa_df %>% 
+  mutate(month = fct_reorder(month, snowfall)) %>% 
+  plot_ly(y = ~snowfall, color = ~month, type = "box", colors = "viridis") %>%
+  layout(xaxis = list(title = 'Month'),
+         yaxis = list(title = 'Snowfall (mm)'))
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+## Chart B
+
+```{r}
+ny_noaa_df %>% 
+  count(id) %>% 
+  mutate(id = fct_reorder(id, n)) %>% 
+  plot_ly(x = ~id, y = ~n, color = ~id, type = "bar", colors = "viridis") %>%
+  layout(xaxis = list(title = 'Weather station ID'),
+         yaxis = list(title = 'Number Snowy Days'))
+```
+
+## Chart C
+
+```{r}
+ny_noaa_df %>%
+  plot_ly(x = ~tmin, y = ~tmax, color = ~month, opacity=0.5, colors = "viridis") %>%
+  layout(xaxis = list(title = 'Mininum Temperature'),
+         yaxis = list(title = 'Maximum Temperature'))
+```
+
+
+
+
+
